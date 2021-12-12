@@ -6,5 +6,5 @@ RUN mvn install
 
 # Then build into container
 FROM openjdk:11
-COPY target/*.jar app.jar
+COPY --from=build /app/target/*.jar app.jar
 ENTRYPOINT ["java","-jar","/app.jar"]
